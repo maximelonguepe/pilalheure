@@ -4,7 +4,6 @@ import menu
 from threading import Thread
 from database.rappel import get_rappel_hour
 from utils.time_util import full_day_to_int
-from hardware.multiple_servos import enclencher_servo_prise_bas, enclencher_servo_prise_haut
 
 
 def thread_verifie_heure():
@@ -15,9 +14,6 @@ def thread_verifie_heure():
         jour_reel = time.strftime("%A")
         day = full_day_to_int(jour_reel)
         if heure_rappel == heur_reelle and minutes_rappel == minutes_reelles:
-            enclencher_servo_prise_bas(day)
-            time.sleep(1)
-            enclencher_servo_prise_haut(day)
             print("alerte")
         time.sleep(60)
 
