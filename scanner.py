@@ -18,12 +18,15 @@ def versJoursPrise(entry, scan, parcours):
         est_rempli, code_retour = prise.getSiRempliOuNon(entry.get())
         if code_retour == 404:
             text_font = ("Boulder", 12, 'bold')
-            label_erreur = Label(scan, text="Erreur le médicament n'est pas enregistré",font=text_font)
+            label_erreur = Label(scan, text="Erreur le médicament n'est pas enregistré", font=text_font)
             label_erreur.grid(row=3, column=1)
             label_erreur.config(fg="red")
-
-
-
+        elif est_rempli == 1:
+            text_font = ("Boulder", 12, 'bold')
+            label_erreur = Label(scan, text="Erreur le médicament a déjà été rempli", font=text_font)
+            label_erreur.grid(row=3, column=1)
+            label_erreur.config(fg="red")
+        #elif est_rempli==0:
 
 def quit_scanner():
     scan.destroy()
