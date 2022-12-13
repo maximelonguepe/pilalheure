@@ -3,6 +3,20 @@ from remplissage import remplissageView
 import scanner
 import changeHeurePrise
 
+page = 0
+
+
+def precedent():
+    global page
+    page = page - 1
+    print(page)
+
+
+def suivant():
+    global page
+    page += 1
+    print(page)
+
 
 def menuView(app_window):
     global menu_widow
@@ -27,12 +41,12 @@ def menuView(app_window):
                   command=lambda: remplissageView(menu_widow))
     btn4.place(relx=0.5, rely=0.3)
 
-    btnPrecedent=Button(menu_widow, text="<-", background=background_color, width=button_width, height=button_height,
-                  command=lambda: remplissageView(menu_widow))
+    btnPrecedent = Button(menu_widow, text="<-", background=background_color, width=button_width, height=3,
+                          command=lambda: precedent())
     btnPrecedent.place(relx=0, rely=0.6)
 
-    btnSuivant=Button(menu_widow, text="->", background=background_color, width=button_width, height=button_height,
-                  command=lambda: remplissageView(menu_widow))
+    btnSuivant = Button(menu_widow, text="->", background=background_color, width=button_width, height=3,
+                        command=lambda: suivant())
     btnSuivant.place(relx=0.5, rely=0.6)
 
     menu_widow.mainloop()
