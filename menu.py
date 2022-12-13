@@ -2,8 +2,10 @@ from tkinter import Button, Toplevel
 from remplissage import remplissageView
 import scanner
 import changeHeurePrise
+from changeNumeroTel import changerNumeroTelView
 
 page = 0
+menu_widow = 1
 
 
 def precedent():
@@ -16,6 +18,32 @@ def suivant():
     global page
     page += 1
     print(page)
+
+
+def affichage_page(btn, btn2, btn3, btn4, btn_precedent, btn_suivant):
+    global page
+    global menu_widow
+
+    if page == 0:
+        btn.config(text="Changer heure de prise")
+        btn_precedent.place_forget()
+        btn_suivant.place(relx=0.5, rely=0.6)
+
+    elif page == 1:
+        btn.config(text="Changer numéro de tel")
+        btn.config(command=lambda: changerNumeroTelView(menu_widow))
+        btn_suivant.place_forget()
+        btn_precedent.place(relx=0, rely=0.6)
+
+
+def precedent_et_affiche(btn, btn2, btn3, btn4, btn_precedent, btn_suivant):
+    precedent()
+    affichage_page(btn, btn2, btn3, btn4, btn_precedent, btn_suivant)
+
+
+def suivant_et_affiche(btn, btn2, btn3, btn4, btn_precedent, btn_suivant):
+    suivant()
+    affichage_page(btn, btn2, btn3, btn4, btn_precedent, btn_suivant)
 
 
 def menuView(app_window):
@@ -41,12 +69,11 @@ def menuView(app_window):
                   command=lambda: remplissageView(menu_widow))
     btn4.place(relx=0.5, rely=0.3)
 
-    btnPrecedent = Button(menu_widow, text="<-", background=background_color, width=button_width, height=3,
-                          command=lambda: precedent())
-    btnPrecedent.place(relx=0, rely=0.6)
+    btn_precedent = Button(menu_widow, text="<-", background=background_color, width=button_width, height=3,
+                           command=lambda: precedent_et_affiche(btn, btn2, btn3, btn4, btn_precedent, btn_suivant))
 
-    btnSuivant = Button(menu_widow, text="->", background=background_color, width=button_width, height=3,
-                        command=lambda: suivant())
-    btnSuivant.place(relx=0.5, rely=0.6)
+    btn_suivant = Button(menu_widow, text="->", background=background_color, width=button_width, height=3,
+                         command=lambda: suivant_et_affiche(btn, btn2,btn3,btn4,btn_precedent,btn_suivant))
+    btn_suivant.place(relx=0.5, rely=0.6)
 
     menu_widow.mainloop()
