@@ -11,13 +11,11 @@ menu_widow = 1
 def precedent():
     global page
     page = page - 1
-    print(page)
 
 
 def suivant():
     global page
     page += 1
-    print(page)
 
 
 def affichage_page(btn, btn2, btn3, btn4, btn_precedent, btn_suivant):
@@ -73,7 +71,7 @@ def menuView(app_window):
                            command=lambda: precedent_et_affiche(btn, btn2, btn3, btn4, btn_precedent, btn_suivant))
 
     btn_suivant = Button(menu_widow, text="->", background=background_color, width=button_width, height=3,
-                         command=lambda: suivant_et_affiche(btn, btn2,btn3,btn4,btn_precedent,btn_suivant))
+                         command=lambda: suivant_et_affiche(btn, btn2, btn3, btn4, btn_precedent, btn_suivant))
     btn_suivant.place(relx=0.5, rely=0.6)
 
     menu_widow.mainloop()
