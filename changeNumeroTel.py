@@ -1,9 +1,20 @@
 from tkinter import Toplevel, Label, Entry, Button
 from database.telephone import get_numero_telephone
 
-def init_number(numero):
-    print(numero)
 
+def init_number(numero, premier_numero, deuxieme_numero, troisieme_numero, quatrieme_numero, cinquieme_numero,
+                sixieme_numero, septieme_numero, huitieme_numero, neuvieme_numero, dizieme_numero):
+    liste_caracters_telephone = list(numero)
+    premier_numero.config(text=liste_caracters_telephone[0])
+    deuxieme_numero.config(text=liste_caracters_telephone[1])
+    troisieme_numero.config(text=liste_caracters_telephone[2])
+    quatrieme_numero.config(text=liste_caracters_telephone[3])
+    cinquieme_numero.config(text=liste_caracters_telephone[4])
+    sixieme_numero.config(text=liste_caracters_telephone[5])
+    septieme_numero.config(text=liste_caracters_telephone[6])
+    huitieme_numero.config(text=liste_caracters_telephone[7])
+    neuvieme_numero.config(text=liste_caracters_telephone[8])
+    dizieme_numero.config(text=liste_caracters_telephone[9])
 
 def plus(label):
     numero = int(label.cget('text'))
@@ -110,5 +121,6 @@ def changerNumeroTelView(menu):
     button_moins_dizieme_numero.place(relx=0.9, rely=0.42)
 
     numero, code = get_numero_telephone()
-    if code!=404:
-        init_number(numero)
+    if code != 404:
+        init_number(numero, premier_numero, deuxieme_numero, troisieme_numero, quatrieme_numero, cinquieme_numero,
+                    sixieme_numero, septieme_numero, huitieme_numero, neuvieme_numero, dizieme_numero)
