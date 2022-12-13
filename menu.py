@@ -27,4 +27,12 @@ def menuView(app_window):
                   command=lambda: remplissageView(menu_widow))
     btn4.place(relx=0.5, rely=0.3)
 
+    btnPrecedent=Button(menu_widow, text="<-", background=background_color, width=button_width, height=button_height,
+                  command=lambda: remplissageView(menu_widow))
+    btnPrecedent.place(relx=0, rely=0.6)
+
+    btnSuivant=Button(menu_widow, text="->", background=background_color, width=button_width, height=button_height,
+                  command=lambda: remplissageView(menu_widow))
+    btnSuivant.place(relx=0.5, rely=0.6)
+
     menu_widow.mainloop()
