@@ -1,4 +1,8 @@
 from tkinter import Toplevel, Label, Entry, Button
+from database.telephone import get_numero_telephone
+
+def init_number(numero):
+    print(numero)
 
 
 def plus(label):
@@ -104,3 +108,7 @@ def changerNumeroTelView(menu):
     button_plus_dizieme_numero.place(relx=0.9, rely=0.1)
     button_moins_dizieme_numero = Button(change_tel, text="-", width=3, height=4, command=lambda: moins(dizieme_numero))
     button_moins_dizieme_numero.place(relx=0.9, rely=0.42)
+
+    numero, code = get_numero_telephone()
+    if code!=404:
+        init_number(numero)
