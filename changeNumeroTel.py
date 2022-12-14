@@ -1,5 +1,5 @@
-from tkinter import Toplevel, Label, Entry, Button
-from database.telephone import get_numero_telephone
+from tkinter import Toplevel, Label, Button
+from database.telephone import get_numero_telephone, update_numero_telephone, insert_numero_telphone
 
 
 def init_number(numero, premier_numero, deuxieme_numero, troisieme_numero, quatrieme_numero, cinquieme_numero,
@@ -15,6 +15,7 @@ def init_number(numero, premier_numero, deuxieme_numero, troisieme_numero, quatr
     huitieme_numero.config(text=liste_caracters_telephone[7])
     neuvieme_numero.config(text=liste_caracters_telephone[8])
     dizieme_numero.config(text=liste_caracters_telephone[9])
+
 
 def plus(label):
     numero = int(label.cget('text'))
@@ -33,6 +34,16 @@ def moins(label):
         numero = numero - 1
     label.config(text=str(numero))
 
+
+def enregistre_changement(code_erreur, numero, nouveau_numero):
+    if code_erreur == 404:
+        insert_numero_telphone(nouveau_numero)
+    elif code_erreur == 200:
+        if numero != nouveau_numero:
+            update_numero_telephone(numero)
+
+
+def construit_nouveau_numero()
 
 def changerNumeroTelView(menu):
     change_tel = Toplevel(menu)
@@ -124,3 +135,7 @@ def changerNumeroTelView(menu):
     if code != 404:
         init_number(numero, premier_numero, deuxieme_numero, troisieme_numero, quatrieme_numero, cinquieme_numero,
                     sixieme_numero, septieme_numero, huitieme_numero, neuvieme_numero, dizieme_numero)
+
+    # TODO bien regler la taille du bouton
+    button_ok = Button(change_tel, text="OK", width=75, height=3, command=lambda: moins(dizieme_numero))
+    button_ok.place(relx=0, rely=0.7)
