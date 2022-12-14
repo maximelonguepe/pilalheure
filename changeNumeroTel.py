@@ -40,10 +40,25 @@ def enregistre_changement(code_erreur, numero, nouveau_numero):
         insert_numero_telphone(nouveau_numero)
     elif code_erreur == 200:
         if numero != nouveau_numero:
-            update_numero_telephone(numero)
+            update_numero_telephone(nouveau_numero)
 
 
-def construit_nouveau_numero()
+def construit_nouveau_numero(premier_numero, deuxieme_numero, troisieme_numero, quatrieme_numero, cinquieme_numero,
+                             sixieme_numero, septieme_numero, huitieme_numero, neuvieme_numero, dizieme_numero):
+    return str(premier_numero.cget('text')) + str(deuxieme_numero.cget('text')) + str(troisieme_numero.cget(
+        'text')) + str(quatrieme_numero.cget('text')) + str(cinquieme_numero.cget('text')) + str(sixieme_numero.cget(
+        'text')) + str(septieme_numero.cget('text')) + str(huitieme_numero.cget('text')) + str(neuvieme_numero.cget(
+        'text')) + str(dizieme_numero.cget('text'))
+
+
+def enregistre(change_tel, premier_numero, deuxieme_numero, troisieme_numero, quatrieme_numero, cinquieme_numero,
+               sixieme_numero, septieme_numero, huitieme_numero, neuvieme_numero, dizieme_numero, code_erreur, numero):
+    nouveau_numero = construit_nouveau_numero(premier_numero, deuxieme_numero, troisieme_numero, quatrieme_numero,
+                                              cinquieme_numero,
+                                              sixieme_numero, septieme_numero, huitieme_numero, neuvieme_numero,
+                                              dizieme_numero)
+    enregistre_changement(code_erreur, numero, nouveau_numero)
+    change_tel.destroy()
 
 def changerNumeroTelView(menu):
     change_tel = Toplevel(menu)
@@ -137,5 +152,16 @@ def changerNumeroTelView(menu):
                     sixieme_numero, septieme_numero, huitieme_numero, neuvieme_numero, dizieme_numero)
 
     # TODO bien regler la taille du bouton
-    button_ok = Button(change_tel, text="OK", width=75, height=3, command=lambda: moins(dizieme_numero))
+    button_ok = Button(change_tel, text="OK", width=75, height=3, command=lambda: enregistre(change_tel,
+                                                                                             premier_numero,
+                                                                                             deuxieme_numero,
+                                                                                             troisieme_numero,
+                                                                                             quatrieme_numero,
+                                                                                             cinquieme_numero,
+                                                                                             sixieme_numero,
+                                                                                             septieme_numero,
+                                                                                             huitieme_numero,
+                                                                                             neuvieme_numero,
+                                                                                             dizieme_numero, code,
+                                                                                             numero))
     button_ok.place(relx=0, rely=0.7)
