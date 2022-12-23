@@ -1,21 +1,27 @@
 from tkinter import Toplevel, Label, Entry, Button
-from jourPrise import jourPriseView
+
 import database.prise as prise
+from jourPrise import jourPriseView
+from suppressionMedicament import supprimer_medicament_view
 
 
-def versJoursPrise(entry, scan, parcours):
-    # TODO : a fixer
+def versJoursPrise(resultat_scan, scan, parcours):
+    # TODO : gerer les erreurs
     # TODO : si il y a déjà le médicament empecher lenregistrement
+
+    # parcours = 0 si modifier les jours de prise
     if parcours == 0:
-        name, id_medicament = prise.getPrise(entry.get())
-        jourPriseView(name, scan, id_medicament, parcours)
+        nom_medicament, id_medicament, code_retour = prise.getPrise(resultat_scan.get())
+        jourPriseView(nom_medicament, scan, id_medicament, parcours)
 
+    # parcours = 1 si enregistrer nouveau medicament
     elif parcours == 1:
-        name, id_medicament = prise.getMedicament(entry.get())
-        jourPriseView(name, scan, id_medicament, parcours)
+        nom_medicament, id_medicament = prise.getMedicament(resultat_scan.get())
+        jourPriseView(nom_medicament, scan, id_medicament, parcours)
 
+    # parcours = 2 pour remplir une case avec un medicament
     elif parcours == 2:
-        est_rempli, code_retour = prise.getSiRempliOuNon(entry.get())
+        est_rempli, code_retour = prise.getSiRempliOuNon(resultat_scan.get())
         if code_retour == 404:
             text_font = ("Boulder", 12, 'bold')
             label_erreur = Label(scan, text="Erreur le médicament n'est pas enregistré", font=text_font)
@@ -26,7 +32,18 @@ def versJoursPrise(entry, scan, parcours):
             label_erreur = Label(scan, text="Erreur le médicament a déjà été rempli", font=text_font)
             label_erreur.grid(row=3, column=1)
             label_erreur.config(fg="red")
-        #elif est_rempli==0:
+
+    # supprimer medicament
+    elif parcours == 3:
+        nom_medicament, id_medicament, code_retour = prise.getPrise(resultat_scan.get())
+        if code_retour == 404:
+            text_font = ("Boulder", 12, 'bold')
+            label_erreur = Label(scan, text="Erreur le médicament n'est pas enregistré", font=text_font)
+            label_erreur.grid(row=3, column=1)
+            label_erreur.config(fg="red")
+        else:
+            supprimer_medicament_view(scan, nom_medicament,id_medicament)
+
 
 def quit_scanner():
     scan.destroy()

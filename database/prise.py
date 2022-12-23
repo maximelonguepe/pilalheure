@@ -8,11 +8,13 @@ def getPrise(cip):
         "medicaments.id=prise.id_medicament AND medicaments.cip='" + cip + "'")
     name = ""
     id_medicament = 0
+    code = 404
     for row in cursor:
         name = row[0]
         id_medicament = row[2]
+        code = 200
 
-    return name, id_medicament
+    return name, id_medicament, code
 
 
 def getMedicament(cip):
@@ -81,3 +83,10 @@ def getSiRempliOuNon(cip):
         rempli = row[0]
         code = 200
     return rempli == 1, code
+
+
+def suppression_prise(id_medicament):
+    conn = sqlite3.connect('./database.db')
+    conn.execute(
+        "DELETE FROM prise where id_medicament="+str(id_medicament)+"")
+    conn.commit()

@@ -24,6 +24,9 @@ def affichage_page(btn, btn2, btn3, btn4, btn_precedent, btn_suivant):
 
     if page == 0:
         btn.config(text="Changer heure de prise")
+        btn.config(command=lambda: changeHeurePrise.changeHeureView(menu_widow))
+        btn2.config(text="Ajouter un medicament")
+        btn2.config(command=lambda: scanner.scannerMedicament(menu_widow, 1))
         btn_precedent.place_forget()
         btn_suivant.place(relx=0.5, rely=0.6)
 
@@ -31,7 +34,10 @@ def affichage_page(btn, btn2, btn3, btn4, btn_precedent, btn_suivant):
         btn.config(text="Changer numéro de tel")
         btn.config(command=lambda: changerNumeroTelView(menu_widow))
         btn_suivant.place_forget()
+        btn2.config(text="Supprimer médicament")
+        btn2.config(command=lambda: scanner.scannerMedicament(menu_widow, 3))
         btn_precedent.place(relx=0, rely=0.6)
+
 
 
 def precedent_et_affiche(btn, btn2, btn3, btn4, btn_precedent, btn_suivant):
