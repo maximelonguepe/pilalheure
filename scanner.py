@@ -12,7 +12,13 @@ def versJoursPrise(resultat_scan, scan, parcours):
     # parcours = 0 si modifier les jours de prise
     if parcours == 0:
         nom_medicament, id_medicament, code_retour = prise.getPrise(resultat_scan.get())
-        jourPriseView(nom_medicament, scan, id_medicament, parcours)
+        if code_retour == 200:
+            jourPriseView(nom_medicament, scan, id_medicament, parcours)
+        elif code_retour == 404:
+            text_font = ("Boulder", 12, 'bold')
+            label_erreur = Label(scan, text="Erreur le médicament n'est pas enregistré", font=text_font)
+            label_erreur.grid(row=3, column=1)
+            label_erreur.config(fg="red")
 
     # parcours = 1 si enregistrer nouveau medicament
     elif parcours == 1:
@@ -28,12 +34,14 @@ def versJoursPrise(resultat_scan, scan, parcours):
             label_erreur = Label(scan, text="Erreur le médicament n'est pas enregistré", font=text_font)
             label_erreur.grid(row=3, column=1)
             label_erreur.config(fg="red")
+
         # si le médicament est déjà rempli
         elif est_rempli == 1:
             text_font = ("Boulder", 12, 'bold')
             label_erreur = Label(scan, text="Erreur le médicament a déjà été rempli", font=text_font)
             label_erreur.grid(row=3, column=1)
             label_erreur.config(fg="red")
+
         # TODO : si le médicament n'est pas rempli alors on modifie le champ en base
         elif est_rempli == 0:
             nom_medicament, id_medicament, code_retour = prise.getPrise(resultat_scan.get())
@@ -43,7 +51,8 @@ def versJoursPrise(resultat_scan, scan, parcours):
                 print("remplissage fini")
             else:
                 print("reste a remplir")
-        # supprimer medicament
+
+    # supprimer medicament de la liste des prises
     elif parcours == 3:
         nom_medicament, id_medicament, code_retour = prise.getPrise(resultat_scan.get())
         if code_retour == 404:
