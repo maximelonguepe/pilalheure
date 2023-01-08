@@ -22,18 +22,28 @@ def versJoursPrise(resultat_scan, scan, parcours):
     # parcours = 2 pour remplir une case avec un medicament
     elif parcours == 2:
         est_rempli, code_retour = prise.getSiRempliOuNon(resultat_scan.get())
+        # si aucun médicament n'a été trouvé
         if code_retour == 404:
             text_font = ("Boulder", 12, 'bold')
             label_erreur = Label(scan, text="Erreur le médicament n'est pas enregistré", font=text_font)
             label_erreur.grid(row=3, column=1)
             label_erreur.config(fg="red")
+        # si le médicament est déjà rempli
         elif est_rempli == 1:
             text_font = ("Boulder", 12, 'bold')
             label_erreur = Label(scan, text="Erreur le médicament a déjà été rempli", font=text_font)
             label_erreur.grid(row=3, column=1)
             label_erreur.config(fg="red")
-
-    # supprimer medicament
+        # TODO : si le médicament n'est pas rempli alors on modifie le champ en base
+        elif est_rempli == 0:
+            nom_medicament, id_medicament, code_retour = prise.getPrise(resultat_scan.get())
+            prise.remplirPilulierMedicament(id_medicament)
+            reste_a_remplir, code_retour = prise.resteMedicamentARemplir()
+            if not reste_a_remplir:
+                print("remplissage fini")
+            else:
+                print("reste a remplir")
+        # supprimer medicament
     elif parcours == 3:
         nom_medicament, id_medicament, code_retour = prise.getPrise(resultat_scan.get())
         if code_retour == 404:
@@ -42,7 +52,7 @@ def versJoursPrise(resultat_scan, scan, parcours):
             label_erreur.grid(row=3, column=1)
             label_erreur.config(fg="red")
         else:
-            supprimer_medicament_view(scan, nom_medicament,id_medicament)
+            supprimer_medicament_view(scan, nom_medicament, id_medicament)
 
 
 def quit_scanner():

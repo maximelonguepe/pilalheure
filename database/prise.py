@@ -85,8 +85,29 @@ def getSiRempliOuNon(cip):
     return rempli == 1, code
 
 
+def resteMedicamentARemplir():
+    conn = sqlite3.connect('./database.db')
+    cursor = conn.execute("SELECT COUNT(*) FROM prise WHERE rappel=0")
+    remplis = 0
+    code = 404
+    for row in cursor:
+        remplis = row[0]
+        code = 200
+
+    return remplis >= 1, code
+
+
+# Permet de supprimer un médicament via son identifiant
 def suppression_prise(id_medicament):
     conn = sqlite3.connect('./database.db')
     conn.execute(
-        "DELETE FROM prise where id_medicament="+str(id_medicament)+"")
+        "DELETE FROM prise where id_medicament=" + str(id_medicament) + "")
+    conn.commit()
+
+
+# Permet de mettre le champ rempli d'un medicament a 1
+def remplirPilulierMedicament(id_medicament):
+    conn = sqlite3.connect('./database.db')
+    conn.execute(
+        "UPDATE prise SET rappel=1 WHERE id_medicament=" + str(id_medicament))
     conn.commit()
