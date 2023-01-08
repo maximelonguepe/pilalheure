@@ -1,5 +1,6 @@
-from tkinter import Toplevel, Label, Entry, Button
+from tkinter import Toplevel, Label, Button
 from database.prise import getJoursPrise
+from database.prise import remplirPilulierMedicament
 
 
 def cache_jours_inutile(id_medicament, tableau_labels):
@@ -12,8 +13,13 @@ def cache_jours_inutile(id_medicament, tableau_labels):
     print(jours)
 
 
-def remplirUnMedicament(remplissage, nom_medicament, id_medicament, code_retour):
-    remplissage_un_medicament = Toplevel(remplissage)
+def enregister_prise_medicament(id_medicament, remplissage_un_medicament, scanner):
+    remplirPilulierMedicament(id_medicament)
+    remplissage_un_medicament.destroy()
+    scanner.destroy()
+
+def remplir_un_medicament(scanner, nom_medicament, id_medicament, code_retour):
+    remplissage_un_medicament = Toplevel(scanner)
     remplissage_un_medicament.title("Remplir un medicament")
     remplissage_un_medicament.geometry("480x320")
     text_font = ("Boulder", 10, 'bold')
@@ -40,5 +46,9 @@ def remplirUnMedicament(remplissage, nom_medicament, id_medicament, code_retour)
     tableau_labels.append(label_samedi)
     tableau_labels.append(label_dimanche)
 
+    button_ok = Button(remplissage_un_medicament, text="Remplissage terminé",
+                       command=lambda: enregister_prise_medicament(id_medicament, remplissage_un_medicament, scanner),
+                       font=text_font, width=58, height=5)
+    button_ok.place(relx=0, rely=0.5)
     cache_jours_inutile(id_medicament, tableau_labels)
     remplissage_un_medicament.mainloop()
