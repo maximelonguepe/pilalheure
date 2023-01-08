@@ -3,6 +3,7 @@ from tkinter import Toplevel, Label, Entry, Button
 import database.prise as prise
 from jourPrise import jourPriseView
 from suppressionMedicament import supprimer_medicament_view
+from remplissageUnMedicament import remplirUnMedicament
 
 
 def versJoursPrise(resultat_scan, scan, parcours):
@@ -45,13 +46,13 @@ def versJoursPrise(resultat_scan, scan, parcours):
         # TODO : si le médicament n'est pas rempli alors on modifie le champ en base
         elif est_rempli == 0:
             nom_medicament, id_medicament, code_retour = prise.getPrise(resultat_scan.get())
-            prise.remplirPilulierMedicament(id_medicament)
-            reste_a_remplir, code_retour = prise.resteMedicamentARemplir()
-            if not reste_a_remplir:
-                print("remplissage fini")
-            else:
-                print("reste a remplir")
-
+            # prise.remplirPilulierMedicament(id_medicament)
+            # reste_a_remplir, code_retour = prise.resteMedicamentARemplir()
+            # if not reste_a_remplir:
+            #    print("remplissage fini")
+            # else:
+            #    print("reste a remplir")
+            remplirUnMedicament(scan, nom_medicament, id_medicament, code_retour)
     # supprimer medicament de la liste des prises
     elif parcours == 3:
         nom_medicament, id_medicament, code_retour = prise.getPrise(resultat_scan.get())
