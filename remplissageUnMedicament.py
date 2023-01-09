@@ -10,13 +10,13 @@ def cache_jours_inutile(id_medicament, tableau_labels):
         if jours[i] == 1:
             tableau_labels[i].place(relx=position_x, rely=0.2)
             position_x = position_x + 0.1428571428571429
-    print(jours)
 
 
 def enregister_prise_medicament(id_medicament, remplissage_un_medicament, scanner):
     remplirPilulierMedicament(id_medicament)
     remplissage_un_medicament.destroy()
     scanner.destroy()
+
 
 def remplir_un_medicament(scanner, nom_medicament, id_medicament, code_retour):
     remplissage_un_medicament = Toplevel(scanner)

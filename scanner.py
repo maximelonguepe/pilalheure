@@ -63,8 +63,8 @@ def quit_scanner():
     scan.destroy()
 
 
+# TODO refactoriser le code pour mettre des place au lieu des grid
 def scannerMedicament(menu, parcours):
-    print()
     global scan
     scan = Toplevel(menu)
     scan.title("Scanner medicament")
@@ -72,10 +72,12 @@ def scannerMedicament(menu, parcours):
     text_font = ("Boulder", 20, 'bold')
     border_width = 25
     label_scan = Label(scan, text="Veuillez scanner le médicament", font=text_font, bd=border_width)
-    label_scan.grid(row=0, column=1)
+    label_scan.place(rely=0, relx=0)
     entry = Entry(scan, width=40)
     entry.focus_set()
-    entry.grid(row=1, column=1)
-    btn = Button(scan, text="Ok", width=40, command=lambda: versJoursPrise(entry, scan, parcours))
-    btn.grid(row=2, column=1)
+    entry.place(relx=0.3, rely=0.2)
+    btn = Button(scan, text="Ok", width=40, height=5, command=lambda: versJoursPrise(entry, scan, parcours))
+    btn.place(relx=0.2, rely=0.4)
+    btn_cancel = Button(scan, text="Annuler la saisie ", width=40, height=5,command=quit_scanner)
+    btn_cancel.place(rely=0.7, relx=0.2)
     scan.mainloop()

@@ -9,9 +9,9 @@ def change_color(btn):
         btn.configure(background='#d9d9d9')
 
 
+# TODO : amélioerer cette fonction avec un tableau.
 def init_colors(id_medicament, btn, btn2, btn3, btn4, btn5, btn6, btn7):
     tab = getJoursPrise(id_medicament)
-    print(tab)
     if tab[0] == 1:
         btn.configure(background='green')
     if tab[1] == 1:
