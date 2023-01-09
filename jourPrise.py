@@ -9,23 +9,11 @@ def change_color(btn):
         btn.configure(background='#d9d9d9')
 
 
-# TODO : amélioerer cette fonction avec un tableau.
-def init_colors(id_medicament, btn, btn2, btn3, btn4, btn5, btn6, btn7):
+def init_colors(id_medicament, tableau_buttons):
     tab = getJoursPrise(id_medicament)
-    if tab[0] == 1:
-        btn.configure(background='green')
-    if tab[1] == 1:
-        btn2.configure(background='green')
-    if tab[2] == 1:
-        btn3.configure(background='green')
-    if tab[3] == 1:
-        btn4.configure(background='green')
-    if tab[4] == 1:
-        btn5.configure(background='green')
-    if tab[5] == 1:
-        btn6.configure(background='green')
-    if tab[6] == 1:
-        btn7.configure(background='green')
+    for i in range(len(tab)):
+        if tab[i] == 1:
+            tableau_buttons[i].configure(background='green')
 
 
 def est_Vert(btn):
@@ -60,6 +48,7 @@ def jourPriseView(medicament, scan, id_medicament, parcours):
     jourPrise = Toplevel(scan)
     jourPrise.geometry("480x320")
     jourPrise.title("Définir les jours de prise")
+    tableau_buttons = []
     label = Label(jourPrise, text=medicament)
     label.grid(row=0, column=1, columnspan=5)
     btn = Button(jourPrise, text="Lundi", background="#d9d9d9", width=8, command=lambda: change_color(btn),
@@ -92,6 +81,16 @@ def jourPriseView(medicament, scan, id_medicament, parcours):
                                                           btn7))
 
     btnOK.grid(row=4, column=1, columnspan=5)
+
+    tableau_buttons.append(btn)
+    tableau_buttons.append(btn2)
+    tableau_buttons.append(btn3)
+    tableau_buttons.append(btn4)
+    tableau_buttons.append(btn5)
+    tableau_buttons.append(btn6)
+    tableau_buttons.append(btn7)
+
     if parcours == 0:
-        init_colors(id_medicament, btn, btn2, btn3, btn4, btn5, btn6, btn7)
+        init_colors(id_medicament, tableau_buttons)
+
     jourPrise.mainloop()
