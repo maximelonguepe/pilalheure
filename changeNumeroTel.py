@@ -151,8 +151,8 @@ def changerNumeroTelView(menu):
         init_number(numero, premier_numero, deuxieme_numero, troisieme_numero, quatrieme_numero, cinquieme_numero,
                     sixieme_numero, septieme_numero, huitieme_numero, neuvieme_numero, dizieme_numero)
 
-    # TODO bien regler la taille du bouton
-    button_ok = Button(change_tel, text="OK", width=75, height=3, command=lambda: enregistre(change_tel,
+
+    button_ok = Button(change_tel, text="OK", width=70, height=3, command=lambda: enregistre(change_tel,
                                                                                              premier_numero,
                                                                                              deuxieme_numero,
                                                                                              troisieme_numero,

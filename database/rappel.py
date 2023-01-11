@@ -1,6 +1,5 @@
 import sqlite3
 
-#todo create insert method
 def get_rappel_hour():
     conn = sqlite3.connect('./database.db')
     cursor = conn.execute("SELECT heure,minutes FROM rappel")

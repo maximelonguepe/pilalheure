@@ -18,7 +18,7 @@ def page_suivante():
 def updateList(label, window, btnbas, btnhaut):
     global page
     liste_medicaments = getNomsMedicamentsPasRemplis()
-    if len(liste_medicaments) <= 5:
+    if 5 >= len(liste_medicaments) > 0:
         btnbas.place_forget()
         btnhaut.place_forget()
         buffer = ""
@@ -29,7 +29,7 @@ def updateList(label, window, btnbas, btnhaut):
             buffer += "-" + string1 + "\n"
         label.config(text=buffer)
         label.after(200, lambda: updateList(label, window, btnbas, btnhaut))
-    else:
+    elif len(liste_medicaments) > 5:
         buffer = ""
 
         if (page * 5) + 5 <= len(liste_medicaments):
@@ -52,10 +52,13 @@ def updateList(label, window, btnbas, btnhaut):
             btnhaut.place_forget()
         else:
             btnhaut.place(relx=0, rely=0.7)
+    elif len(liste_medicaments) == 0:
+        buffer = "Remplissage terminé"
+        label.config(text=buffer)
+        btnbas.place_forget()
+        btnhaut.place_forget()
 
-
-def printok():
-    print("ok")
+        label.config(fg="green")
 
 
 def remplissageView(menu_view):
@@ -72,7 +75,7 @@ def remplissageView(menu_view):
     btnhaut.place(relx=0, rely=0.7)
     btnbas = Button(remplissage, text="B", command=lambda: page_suivante(), width=30)
     btnbas.place(relx=0.5, rely=0.7)
-    updateList(label_nom_medicaments, remplissage, btnbas, btnhaut)
     btn_scanner = Button(remplissage, text="Scanner", command=lambda: scannerMedicament(remplissage, 2), width=60)
+    updateList(label_nom_medicaments, remplissage, btnbas, btnhaut)
     btn_scanner.place(relx=0, rely=0.8)
     remplissage.mainloop()
