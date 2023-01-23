@@ -2,7 +2,7 @@
 import RPi.GPIO as GPIO
 import time
 
-BuzzPin = 27 # Raspberry Pi Pin 17-GPIO 17
+BuzzPin = 16 # Raspberry Pi Pin 17-GPIO 17
 
 def setup(pin):
     global BuzzerPin
