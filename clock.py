@@ -1,7 +1,6 @@
 import time
 from threading import Thread
 from tkinter import Label, Tk
-
 import menu
 from confirmationPrise import confirmer_vue_prise
 from database.rappel import get_rappel_hour
