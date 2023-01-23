@@ -19,7 +19,7 @@ def confirmer_vue_prise(clock):
     confirmer_prise.geometry("480x320")
     text_font = ("Boulder", 15, 'bold')
     thread = Thread(target=thread_bippe())
-    bouton_confirm = Button(confirmer_prise, text="Confirmer la prise", width=25, height=7,
+    bouton_confirm = Button(confirmer_prise, text="Confirmer la prise",
                             command=lambda: confirmer_prise.destroy())
     bouton_confirm.place(relx=0,rely=0)
     confirmer_prise.mainloop()
