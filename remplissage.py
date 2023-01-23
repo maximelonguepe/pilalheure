@@ -1,4 +1,4 @@
-from tkinter import Toplevel, Label, Button
+from tkinter import Toplevel, Label, Button, PhotoImage
 from database.prise import getNomsMedicamentsPasRemplis
 from scanner import scannerMedicament
 
@@ -71,9 +71,9 @@ def remplissageView(menu_view):
     label_titre.place(relx=0, rely=0)
     label_nom_medicaments = Label(remplissage, background="#d9d9d9", font=list_font)
     label_nom_medicaments.place(relx=0, rely=0.2)
-    btnhaut = Button(remplissage, text="H", command=lambda: page_precedente(), width=30)
+    btnhaut = Button(remplissage, text="Précédent", command=lambda: page_precedente(), width=30)
     btnhaut.place(relx=0, rely=0.7)
-    btnbas = Button(remplissage, text="B", command=lambda: page_suivante(), width=30)
+    btnbas = Button(remplissage, text="Suivant", command=lambda: page_suivante(), width=30)
     btnbas.place(relx=0.5, rely=0.7)
     btn_scanner = Button(remplissage, text="Scanner", command=lambda: scannerMedicament(remplissage, 2), width=60)
     updateList(label_nom_medicaments, remplissage, btnbas, btnhaut)
