@@ -1,12 +1,14 @@
-from tkinter import Label, Tk
 import time
-import menu
 from threading import Thread
-from database.rappel import get_rappel_hour
-from utils.time_util import full_day_to_int
-from hardware.buzzer import buzz_on,buzz_off
+from tkinter import Label, Tk
 
-def thread_verifie_heure():
+import menu
+from database.rappel import get_rappel_hour
+from hardware.buzzer import buzz_on, buzz_off
+from utils.time_util import full_day_to_int
+
+
+def thread_verifie_heure(prise):
     while True:
         heure_rappel, minutes_rappel = get_rappel_hour()
         heur_reelle = int(time.strftime("%H"))
@@ -31,6 +33,7 @@ def digital_clock():
 
 
 if __name__ == '__main__':
+    prise = 0
     app_window = Tk()
     app_window.title("Digital Clock")
     app_window.geometry("480x320")
@@ -40,7 +43,7 @@ if __name__ == '__main__':
     label.bind("<Button-1>", lambda e: menu.menuView(app_window))
     label.grid(row=0, column=1)
     digital_clock()
-    thread = Thread(target=thread_verifie_heure)
+    thread = Thread(target=thread_verifie_heure, args=(prise,))
     thread.start()
     # windowUtils.unclose_window(app_window)
     app_window.mainloop()

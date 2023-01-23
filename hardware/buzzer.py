@@ -5,7 +5,6 @@ triggerPIN = 21
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(triggerPIN, GPIO.OUT)
 buzzer = gpiozero.Buzzer(21)
-print("test")
 
 
 def buzz_on():
