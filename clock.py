@@ -8,7 +8,7 @@ from database.rappel import get_rappel_hour
 from hardware.buzzer import buzz_on, buzz_off
 from utils.time_util import full_day_to_int
 
-app_window = 0
+global app_window
 
 
 def thread_verifie_heure():
@@ -37,7 +37,6 @@ def digital_clock():
 
 if __name__ == '__main__':
     prise = 0
-    global app_window
     app_window = Tk()
     app_window.title("Digital Clock")
     app_window.geometry("480x320")
