@@ -1,7 +1,7 @@
 import time
 from threading import Thread
 from tkinter import Label, Tk
-
+from tkthread import tk, TkThread
 import menu
 from confirmationPrise import confirmer_vue_prise
 from database.rappel import get_rappel_hour
@@ -29,7 +29,8 @@ def digital_clock():
 
 
 if __name__ == '__main__':
-    app_window = Tk()
+    app_window = tk.Tk()
+    tkt = TkThread(app_window)
     app_window.title("Digital Clock")
     app_window.geometry("480x320")
     text_font = ("Boulder", 67, 'bold')
