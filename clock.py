@@ -1,12 +1,24 @@
 import time
 from threading import Thread
-from tkinter import Label, Tk
+from tkinter import Label, Tk, Button
+
 import menu
-from confirmationPrise import confirmer_vue_prise
 from database.rappel import get_rappel_hour
+from hardware.buzzer import buzz_on, buzz_off
 from utils.time_util import full_day_to_int
 
 global app_window
+global label
+global button_ok_prise
+global quit_window
+
+
+def thread_bippe():
+    while not quit_window:
+        buzz_on()
+        time.sleep(1)
+        buzz_off()
+        time.sleep(1)
 
 
 def thread_verifie_heure():
@@ -17,7 +29,10 @@ def thread_verifie_heure():
         jour_reel = time.strftime("%A")
         day = full_day_to_int(jour_reel)
         if heure_rappel == heur_reelle and minutes_rappel == minutes_reelles:
-            confirmer_vue_prise(app_window)
+            label.place_forget()
+            button_ok_prise.place(relx=0, rely=0)
+            threadBippe = Thread(target=thread_bippe())
+            threadBippe.start()
         time.sleep(60)
 
 
@@ -27,7 +42,15 @@ def digital_clock():
     label.after(1000, digital_clock)
 
 
+def confirmation_prise():
+    label.place(relx=0, rely=0)
+    button_ok_prise.place_forget()
+    global quit_window
+    quit_window = True
+
+
 if __name__ == '__main__':
+    quit_window = False
     app_window = Tk()
     app_window.title("Digital Clock")
     app_window.geometry("480x320")
@@ -35,9 +58,11 @@ if __name__ == '__main__':
     border_width = 25
     label = Label(app_window, font=text_font, bd=border_width)
     label.bind("<Button-1>", lambda e: menu.menuView(app_window))
-    label.grid(row=0, column=1)
+    label.place(relx=0, rely=0)
+    button_ok_prise = Button(text="Confirmer la prise", command=confirmation_prise)
     digital_clock()
     thread = Thread(target=thread_verifie_heure)
     thread.start()
+
     # windowUtils.unclose_window(app_window)
     app_window.mainloop()
