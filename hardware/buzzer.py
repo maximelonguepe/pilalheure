@@ -6,5 +6,11 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(triggerPIN, GPIO.OUT)
 buzzer = gpiozero.Buzzer(21)
 print("test")
-while True:
+
+
+def buzz_on():
     buzzer.on()
+
+
+def buzz_off():
+    buzzer.off()

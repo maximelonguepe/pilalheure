@@ -4,7 +4,7 @@ import menu
 from threading import Thread
 from database.rappel import get_rappel_hour
 from utils.time_util import full_day_to_int
-
+from hardware.buzzer import buzz_on,buzz_off
 
 def thread_verifie_heure():
     while True:
@@ -15,7 +15,12 @@ def thread_verifie_heure():
         day = full_day_to_int(jour_reel)
         if heure_rappel == heur_reelle and minutes_rappel == minutes_reelles:
             time.sleep(1)
-            print("alerte")
+            while True:
+                buzz_on()
+                time.sleep(1)
+                buzz_off()
+                time.sleep(1)
+
         time.sleep(60)
 
 
