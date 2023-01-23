@@ -10,7 +10,6 @@ quit_window = 0
 def thread_bippe():
     global quit_window
     while not quit_window:
-        global quit_window
         buzz_on()
         time.sleep(1)
         buzz_off()
