@@ -14,11 +14,13 @@ global quit_window
 
 
 def thread_bippe():
+    global quit_window
     while not quit_window:
         buzz_on()
         time.sleep(1)
         buzz_off()
         time.sleep(1)
+    quit_window = False
 
 
 def thread_verifie_heure():
