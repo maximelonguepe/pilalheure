@@ -23,6 +23,7 @@ def thread_bippe():
         time.sleep(1)
         buzz_off()
         time.sleep(1)
+    print("jour ---> " + str(day))
     enclencher_servo_remplissage_haut(day)
     quit_window = False
 
