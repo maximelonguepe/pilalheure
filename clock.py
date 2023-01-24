@@ -5,6 +5,7 @@ from tkinter import Label, Tk, Button
 import menu
 from database.rappel import get_rappel_hour
 from hardware.buzzer import buzz_on, buzz_off
+from hardware.multiple_servos import enclencher_servo_remplissage_haut, enclencher_servo_remplissage_bas
 from utils.time_util import full_day_to_int
 
 global app_window
@@ -17,8 +18,10 @@ def thread_bippe():
     global quit_window
     while not quit_window:
         buzz_on()
+        enclencher_servo_remplissage_bas(0)
         time.sleep(1)
         buzz_off()
+        enclencher_servo_remplissage_haut(0)
         time.sleep(1)
     quit_window = False
 
