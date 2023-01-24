@@ -12,16 +12,18 @@ global app_window
 global label
 global button_ok_prise
 global quit_window
+global day
 
 
 def thread_bippe():
     global quit_window
+    global day
     while not quit_window:
         buzz_on()
         time.sleep(1)
         buzz_off()
         time.sleep(1)
-    enclencher_servo_remplissage_haut(0)
+    enclencher_servo_remplissage_haut(day)
     quit_window = False
 
 
@@ -31,6 +33,7 @@ def thread_verifie_heure():
         heur_reelle = int(time.strftime("%H"))
         minutes_reelles = int(time.strftime("%M"))
         jour_reel = time.strftime("%A")
+        global day
         day = full_day_to_int(jour_reel)
         if heure_rappel == heur_reelle and minutes_rappel == minutes_reelles:
             label.place_forget()
