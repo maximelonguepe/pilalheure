@@ -18,8 +18,10 @@ def thread_bippe():
     global quit_window
     while not quit_window:
         buzz_on()
+        enclencher_servo_remplissage_bas(0)
         time.sleep(1)
         buzz_off()
+        enclencher_servo_remplissage_haut(0)
         time.sleep(1)
     quit_window = False
 
