@@ -18,11 +18,10 @@ def thread_bippe():
     global quit_window
     while not quit_window:
         buzz_on()
-        enclencher_servo_remplissage_bas(0)
         time.sleep(1)
         buzz_off()
-        enclencher_servo_remplissage_haut(0)
         time.sleep(1)
+    enclencher_servo_remplissage_haut(0)
     quit_window = False
 
 
@@ -36,6 +35,7 @@ def thread_verifie_heure():
         if heure_rappel == heur_reelle and minutes_rappel == minutes_reelles:
             label.place_forget()
             button_ok_prise.place(relx=0, rely=0)
+            enclencher_servo_remplissage_bas(0)
             threadBippe = Thread(target=thread_bippe())
             threadBippe.start()
         time.sleep(60)
