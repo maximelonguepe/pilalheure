@@ -5,7 +5,7 @@ from database.prise import remplirPilulierMedicament
 from hardware.multiple_servos import enclencher_servo_remplissage_bas, enclencher_servo_remplissage_haut
 
 
-def cache_jours_inutile(id_medicament, tableau_labels, jours):
+def cache_jours_inutile(tableau_labels, jours):
     position_x = 0
     for i in range(len(jours)):
         if jours[i] == 1:
@@ -67,6 +67,6 @@ def remplir_un_medicament(scanner, nom_medicament, id_medicament, code_retour):
                        font=text_font, width=58, height=5)
     button_ok.place(relx=0, rely=0.5)
 
-    cache_jours_inutile(id_medicament, tableau_labels, tableau_jours)
+    cache_jours_inutile(tableau_labels, tableau_jours)
     remplissage_jours(tableau_jours)
     remplissage_un_medicament.mainloop()
