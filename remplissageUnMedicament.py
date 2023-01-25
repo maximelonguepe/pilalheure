@@ -1,9 +1,10 @@
 from tkinter import Toplevel, Label, Button
 from database.prise import getJoursPrise
 from database.prise import remplirPilulierMedicament
+from hardware.multiple_servos import enclencher_servo_remplissage_haut, enclencher_servo_remplissage_bas
 
 
-def cache_jours_inutile(id_medicament, tableau_labels,jours):
+def cache_jours_inutile(id_medicament, tableau_labels, jours):
     position_x = 0
     for i in range(len(jours)):
         if jours[i] == 1:
@@ -15,6 +16,12 @@ def enregister_prise_medicament(id_medicament, remplissage_un_medicament, scanne
     remplirPilulierMedicament(id_medicament)
     remplissage_un_medicament.destroy()
     scanner.destroy()
+
+
+def remplissage_jours(jours_prise):
+    for i in range(len(jours_prise)):
+        if jours_prise[i] == 1:
+            enclencher_servo_remplissage_bas(i)
 
 
 def remplir_un_medicament(scanner, nom_medicament, id_medicament, code_retour):
@@ -51,4 +58,5 @@ def remplir_un_medicament(scanner, nom_medicament, id_medicament, code_retour):
     button_ok.place(relx=0, rely=0.5)
     tableau_jours = getJoursPrise(id_medicament)
     cache_jours_inutile(id_medicament, tableau_labels, tableau_jours)
+    remplissage_jours(tableau_jours)
     remplissage_un_medicament.mainloop()
