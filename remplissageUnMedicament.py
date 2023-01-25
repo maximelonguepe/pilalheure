@@ -1,7 +1,8 @@
 from tkinter import Toplevel, Label, Button
+
 from database.prise import getJoursPrise
 from database.prise import remplirPilulierMedicament
-from hardware.multiple_servos import enclencher_servo_remplissage_haut, enclencher_servo_remplissage_bas
+from hardware.multiple_servos import enclencher_servo_remplissage_bas, enclencher_servo_remplissage_haut
 
 
 def cache_jours_inutile(id_medicament, tableau_labels, jours):
@@ -12,8 +13,9 @@ def cache_jours_inutile(id_medicament, tableau_labels, jours):
             position_x = position_x + 0.1428571428571429
 
 
-def enregister_prise_medicament(id_medicament, remplissage_un_medicament, scanner):
+def enregister_prise_medicament_et_ferme_servo(id_medicament, remplissage_un_medicament, scanner, jours):
     remplirPilulierMedicament(id_medicament)
+    fermeture_jours(jours)
     remplissage_un_medicament.destroy()
     scanner.destroy()
 
@@ -22,6 +24,12 @@ def remplissage_jours(jours_prise):
     for i in range(len(jours_prise)):
         if jours_prise[i] == 1:
             enclencher_servo_remplissage_bas(i)
+
+
+def fermeture_jours(jours_prise):
+    for i in range(len(jours_prise)):
+        if jours_prise[i] == 1:
+            enclencher_servo_remplissage_haut(i)
 
 
 def remplir_un_medicament(scanner, nom_medicament, id_medicament, code_retour):
@@ -51,12 +59,14 @@ def remplir_un_medicament(scanner, nom_medicament, id_medicament, code_retour):
     tableau_labels.append(label_vendredi)
     tableau_labels.append(label_samedi)
     tableau_labels.append(label_dimanche)
-
+    tableau_jours = getJoursPrise(id_medicament)
     button_ok = Button(remplissage_un_medicament, text="Remplissage terminé",
-                       command=lambda: enregister_prise_medicament(id_medicament, remplissage_un_medicament, scanner),
+                       command=lambda: enregister_prise_medicament_et_ferme_servo(id_medicament,
+                                                                                  remplissage_un_medicament, scanner,
+                                                                                  tableau_jours),
                        font=text_font, width=58, height=5)
     button_ok.place(relx=0, rely=0.5)
-    tableau_jours = getJoursPrise(id_medicament)
+
     cache_jours_inutile(id_medicament, tableau_labels, tableau_jours)
     remplissage_jours(tableau_jours)
     remplissage_un_medicament.mainloop()
