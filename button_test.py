@@ -6,5 +6,5 @@ def test():
 
 
 but = Button(21)
-while True:
-    but.when_pressed = test
+
+but.when_pressed = test
