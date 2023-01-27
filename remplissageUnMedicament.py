@@ -85,9 +85,7 @@ def remplir_un_medicament(scanner, nom_medicament, id_medicament, code_retour):
     tableau_jours = getJoursPrise(id_medicament)
 
     button_ok = Button(remplissage_un_medicament, text="Remplissage terminé",
-                       command=lambda: enregister_prise_medicament_et_ferme_servo(id_medicament,
-                                                                                  remplissage_un_medicament, scanner,
-                                                                                  tableau_jours),
+                       command=lambda: enregister_prise_medicament_et_ferme_servo(),
                        font=text_font, width=58, height=5)
     button_ok.place(relx=0, rely=0.5)
 
