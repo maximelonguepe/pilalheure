@@ -47,7 +47,7 @@ def thread_verifie_heure():
         day = full_day_to_int(jour_reel)
         if heure_rappel == heur_reelle and minutes_rappel == minutes_reelles:
             label.place_forget()
-            button_ok_prise.place(relx=0, rely=0)
+            button_ok_prise.place(relx=0, rely=0.3)
             enclencher_servo_remplissage_bas(day)
             threadBippe = Thread(target=thread_bippe())
             threadBippe.start()
@@ -73,11 +73,12 @@ if __name__ == '__main__':
     app_window.title("Digital Clock")
     app_window.geometry("480x320")
     text_font = ("Boulder", 67, 'bold')
+    text_font2 = ("Boulder", 35, 'bold')
     border_width = 25
     label = Label(app_window, font=text_font, bd=border_width)
     label.bind("<Button-1>", lambda e: menu.menuView(app_window))
     label.place(relx=0, rely=0)
-    button_ok_prise = Label(text="Confirmer la prise en appuyant sur le bouton")
+    button_ok_prise = Label(text="Confirmer la prise en appuyant sur le bouton",font=text_font2)
     digital_clock()
     thread = Thread(target=thread_verifie_heure)
     thread.start()
