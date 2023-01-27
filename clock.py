@@ -33,10 +33,8 @@ def thread_bippe():
 
 
 def thread_attente_bouton():
-    print("Début thread")
     buton_confirmation = gpiozero.Button(20)
     buton_confirmation.wait_for_press()
-    print("ok")
     confirmation_prise()
 
 
@@ -80,7 +78,7 @@ if __name__ == '__main__':
     label = Label(app_window, font=text_font, bd=border_width)
     label.bind("<Button-1>", lambda e: menu.menuView(app_window))
     label.place(relx=0, rely=0)
-    button_ok_prise = Button(text="Confirmer la prise", command=confirmation_prise)
+    button_ok_prise = Label(text="Confirmer la prise en appuyant sur le bouton")
     digital_clock()
     thread = Thread(target=thread_verifie_heure)
     thread.start()
