@@ -9,7 +9,7 @@ from database.rappel import get_rappel_hour
 from hardware.buzzer import buzz_on, buzz_off
 from hardware.multiple_servos import enclencher_servo_remplissage_haut, enclencher_servo_remplissage_bas
 from utils.time_util import full_day_to_int
-
+from hardware.button import wait_for_press
 global app_window
 global label
 global button_ok_prise
@@ -33,8 +33,7 @@ def thread_bippe():
 
 
 def thread_attente_bouton():
-    buton_confirmation = gpiozero.Button(20)
-    buton_confirmation.wait_for_press()
+    wait_for_press()
     confirmation_prise()
 
 
