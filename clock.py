@@ -73,7 +73,7 @@ if __name__ == '__main__':
     app_window.title("Digital Clock")
     app_window.geometry("480x320")
     text_font = ("Boulder", 67, 'bold')
-    text_font2 = ("Boulder", 15, 'bold')
+    text_font2 = ("Boulder", 12, 'bold')
     border_width = 25
     label = Label(app_window, font=text_font, bd=border_width)
     label.bind("<Button-1>", lambda e: menu.menuView(app_window))
