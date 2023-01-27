@@ -33,8 +33,8 @@ def thread_bippe():
 
 def thread_attente_bouton():
     buton_confirmation = gpiozero.Button(20)
-    while not buton_confirmation.ispressed:
-        time.sleep(0.1)
+    buton_confirmation.wait_for_press()
+    print("appui bouton")
     confirmation_prise()
 
 
