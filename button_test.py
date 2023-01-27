@@ -5,6 +5,6 @@ def test():
     print("pressed")
 
 
-but = Button(21)
-
-but.when_pressed = test
+but = Button(20)
+while True:
+    but.when_pressed = test
