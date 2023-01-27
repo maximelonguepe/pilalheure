@@ -2,6 +2,8 @@ import time
 from threading import Thread
 from tkinter import Label, Tk, Button
 
+import gpiozero
+
 import menu
 from database.rappel import get_rappel_hour
 from hardware.buzzer import buzz_on, buzz_off
@@ -24,7 +26,16 @@ def thread_bippe():
         buzz_off()
         time.sleep(1)
     enclencher_servo_remplissage_haut(day)
+    thread_confirmation = Thread(target=thread_attente_bouton)
+    thread_confirmation.start()
     quit_window = False
+
+
+def thread_attente_bouton():
+    buton_confirmation = gpiozero.Button(20)
+    while not buton_confirmation.ispressed:
+        time.sleep(0.1)
+    confirmation_prise()
 
 
 def thread_verifie_heure():
