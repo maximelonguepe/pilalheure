@@ -1,4 +1,5 @@
-from tkinter import Toplevel, Label, Button
+from threading import Thread
+from tkinter import Toplevel, Label
 
 from database.prise import getJoursPrise
 from database.prise import remplirPilulierMedicament
@@ -85,11 +86,12 @@ def remplir_un_medicament(scanner, nom_medicament, id_medicament, code_retour):
     global tableau_jours
     tableau_jours = getJoursPrise(id_medicament)
 
-    #Todo rename it
+    # Todo rename it
     button_ok = Label(remplissage_un_medicament, text="Appuyez sur le bouton pour confirmer le remplissage",
-                       font=text_font, width=58, height=5)
+                      font=text_font, width=58, height=5)
     button_ok.place(relx=0, rely=0.5)
-
+    thread = Thread(target=thread_appui_bouton())
+    thread.start()
     cache_jours_inutile(tableau_labels, tableau_jours)
     remplissage_jours(tableau_jours)
     remplissage_un_medicament.mainloop()
