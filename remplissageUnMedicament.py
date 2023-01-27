@@ -44,6 +44,7 @@ def fermeture_jours(jours_prise):
 
 def thread_appui_bouton():
     wait_for_press()
+    enregister_prise_medicament_et_ferme_servo()
 
 
 def remplir_un_medicament(scanner, nom_medicament, id_medicament, code_retour):
@@ -84,8 +85,8 @@ def remplir_un_medicament(scanner, nom_medicament, id_medicament, code_retour):
     global tableau_jours
     tableau_jours = getJoursPrise(id_medicament)
 
-    button_ok = Button(remplissage_un_medicament, text="Remplissage terminé",
-                       command=lambda: enregister_prise_medicament_et_ferme_servo(),
+    #Todo rename it
+    button_ok = Label(remplissage_un_medicament, text="Appuyez sur le bouton pour confirmer le remplissage",
                        font=text_font, width=58, height=5)
     button_ok.place(relx=0, rely=0.5)
 
