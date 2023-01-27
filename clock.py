@@ -20,14 +20,15 @@ global day
 def thread_bippe():
     global quit_window
     global day
+    thread_confirmation = Thread(target=thread_attente_bouton)
+    thread_confirmation.start()
     while not quit_window:
         buzz_on()
         time.sleep(1)
         buzz_off()
         time.sleep(1)
     enclencher_servo_remplissage_haut(day)
-    thread_confirmation = Thread(target=thread_attente_bouton)
-    thread_confirmation.start()
+
     quit_window = False
 
 
