@@ -7,7 +7,8 @@ import gpiozero
 import menu
 from database.rappel import get_rappel_hour
 from hardware.buzzer import buzz_on, buzz_off
-from hardware.multiple_servos import enclencher_servo_remplissage_haut, enclencher_servo_remplissage_bas
+from hardware.multiple_servos import enclencher_servo_remplissage_haut, enclencher_servo_remplissage_bas, \
+    enclencher_servo_prise_haut, enclencher_servo_prise_bas
 from utils.time_util import full_day_to_int
 from hardware.button import wait_for_press
 global app_window
@@ -27,7 +28,7 @@ def thread_bippe():
         time.sleep(1)
         buzz_off()
         time.sleep(1)
-    enclencher_servo_remplissage_haut(day)
+    enclencher_servo_prise_haut(day)
 
     quit_window = False
 
@@ -48,7 +49,7 @@ def thread_verifie_heure():
         if heure_rappel == heur_reelle and minutes_rappel == minutes_reelles:
             label.place_forget()
             button_ok_prise.place(relx=0, rely=0.3)
-            enclencher_servo_remplissage_bas(day)
+            enclencher_servo_prise_bas(day)
             threadBippe = Thread(target=thread_bippe())
             threadBippe.start()
         time.sleep(60)
