@@ -11,6 +11,7 @@ from hardware.multiple_servos import enclencher_servo_remplissage_haut, enclench
     enclencher_servo_prise_haut, enclencher_servo_prise_bas
 from utils.time_util import full_day_to_int
 from hardware.button import wait_for_press
+from hardware.led import led_on,led_off
 global app_window
 global label
 global button_ok_prise
@@ -25,8 +26,10 @@ def thread_bippe():
     thread_confirmation.start()
     while not quit_window:
         buzz_on()
+        led_on()
         time.sleep(1)
         buzz_off()
+        led_off()
         time.sleep(1)
     enclencher_servo_prise_haut(day)
 
