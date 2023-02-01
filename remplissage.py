@@ -77,5 +77,5 @@ def remplissageView(menu_view):
     btnbas.place(relx=0.5, rely=0.55)
     btn_scanner = Button(remplissage, text="Scanner", command=lambda: scannerMedicament(remplissage, 2), width=60,height=3)
     updateList(label_nom_medicaments, remplissage, btnbas, btnhaut)
-    btn_scanner.place(relx=0, rely=0.8)
+    btn_scanner.place(relx=0, rely=0.65)
     remplissage.mainloop()
