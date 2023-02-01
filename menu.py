@@ -1,8 +1,9 @@
 from tkinter import Button, Toplevel
-from remplissage import remplissageView
-import scanner
+
 import changeHeurePrise
+import scanner
 from changeNumeroTel import changerNumeroTelView
+from remplissage import remplissageView
 
 page = 0
 menu_widow = 1
@@ -28,7 +29,7 @@ def affichage_page(btn, btn2, btn3, btn4, btn_precedent, btn_suivant):
         btn2.config(text="Ajouter un medicament")
         btn2.config(command=lambda: scanner.scannerMedicament(menu_widow, 1))
         btn_precedent.place_forget()
-        btn_suivant.place(relx=0.5, rely=0.55)
+        btn_suivant.place(relx=0.5, rely=0.5)
 
     elif page == 1:
         btn.config(text="Changer numéro de tel")
@@ -36,8 +37,7 @@ def affichage_page(btn, btn2, btn3, btn4, btn_precedent, btn_suivant):
         btn_suivant.place_forget()
         btn2.config(text="Supprimer médicament")
         btn2.config(command=lambda: scanner.scannerMedicament(menu_widow, 3))
-        btn_precedent.place(relx=0, rely=0.55)
-
+        btn_precedent.place(relx=0, rely=0.5)
 
 
 def precedent_et_affiche(btn, btn2, btn3, btn4, btn_precedent, btn_suivant):
@@ -49,6 +49,9 @@ def suivant_et_affiche(btn, btn2, btn3, btn4, btn_precedent, btn_suivant):
     suivant()
     affichage_page(btn, btn2, btn3, btn4, btn_precedent, btn_suivant)
 
+def close_widow():
+    global menu_widow
+    menu_widow.destroy()
 
 def menuView(app_window):
     global menu_widow
@@ -78,6 +81,8 @@ def menuView(app_window):
 
     btn_suivant = Button(menu_widow, text="->", background=background_color, width=button_width, height=3,
                          command=lambda: suivant_et_affiche(btn, btn2, btn3, btn4, btn_precedent, btn_suivant))
-    btn_suivant.place(relx=0.5, rely=0.55)
-
+    btn_suivant.place(relx=0.5, rely=0.5)
+    btn_close = Button(menu_widow, text="Fermer", background=background_color, width=button_width, height=3,
+                       command=lambda: close_widow())
+    btn_close.place(relx=0, rely=0.7)
     menu_widow.mainloop()
