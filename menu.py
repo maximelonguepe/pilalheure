@@ -28,7 +28,7 @@ def affichage_page(btn, btn2, btn3, btn4, btn_precedent, btn_suivant):
         btn2.config(text="Ajouter un medicament")
         btn2.config(command=lambda: scanner.scannerMedicament(menu_widow, 1))
         btn_precedent.place_forget()
-        btn_suivant.place(relx=0.5, rely=0.6)
+        btn_suivant.place(relx=0.5, rely=0.65)
 
     elif page == 1:
         btn.config(text="Changer numéro de tel")
@@ -36,7 +36,7 @@ def affichage_page(btn, btn2, btn3, btn4, btn_precedent, btn_suivant):
         btn_suivant.place_forget()
         btn2.config(text="Supprimer médicament")
         btn2.config(command=lambda: scanner.scannerMedicament(menu_widow, 3))
-        btn_precedent.place(relx=0, rely=0.6)
+        btn_precedent.place(relx=0, rely=0.65)
 
 
 
