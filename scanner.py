@@ -72,10 +72,10 @@ def scannerMedicament(menu, parcours):
     text_font = ("Boulder", 15, 'bold')
     border_width = 25
     label_scan = Label(scan, text="Veuillez scanner le médicament", font=text_font, bd=border_width)
-    label_scan.place(rely=0, relx=0)
-    entry = Entry(scan, width=40)
+    label_scan.place(rely=0, relx=0.2)
+    entry = Entry(scan, width=50)
     entry.focus_set()
-    entry.place(relx=0.3, rely=0.2)
+    entry.place(relx=0, rely=0.2)
     btn = Button(scan, text="Ok", width=40, height=5, command=lambda: versJoursPrise(entry, scan, parcours))
     btn.place(relx=0.2, rely=0.4)
     btn_cancel = Button(scan, text="Annuler la saisie ", width=40, height=5,command=quit_scanner)
