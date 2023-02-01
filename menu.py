@@ -28,7 +28,7 @@ def affichage_page(btn, btn2, btn3, btn4, btn_precedent, btn_suivant):
         btn2.config(text="Ajouter un medicament")
         btn2.config(command=lambda: scanner.scannerMedicament(menu_widow, 1))
         btn_precedent.place_forget()
-        btn_suivant.place(relx=0.5, rely=0.65)
+        btn_suivant.place(relx=0.5, rely=0.55)
 
     elif page == 1:
         btn.config(text="Changer numéro de tel")
@@ -36,7 +36,7 @@ def affichage_page(btn, btn2, btn3, btn4, btn_precedent, btn_suivant):
         btn_suivant.place_forget()
         btn2.config(text="Supprimer médicament")
         btn2.config(command=lambda: scanner.scannerMedicament(menu_widow, 3))
-        btn_precedent.place(relx=0, rely=0.65)
+        btn_precedent.place(relx=0, rely=0.55)
 
 
 
@@ -68,16 +68,16 @@ def menuView(app_window):
     btn3 = Button(menu_widow, text="Modifer les jours de prise",
                   command=lambda: scanner.scannerMedicament(menu_widow, 0), width=button_width, height=button_height,
                   background=background_color)
-    btn3.place(relx=0, rely=0.3)
+    btn3.place(relx=0, rely=0.25)
     btn4 = Button(menu_widow, text="Remplissage", background=background_color, width=button_width, height=button_height,
                   command=lambda: remplissageView(menu_widow))
-    btn4.place(relx=0.5, rely=0.3)
+    btn4.place(relx=0.5, rely=0.25)
 
     btn_precedent = Button(menu_widow, text="<-", background=background_color, width=button_width, height=3,
                            command=lambda: precedent_et_affiche(btn, btn2, btn3, btn4, btn_precedent, btn_suivant))
 
     btn_suivant = Button(menu_widow, text="->", background=background_color, width=button_width, height=3,
                          command=lambda: suivant_et_affiche(btn, btn2, btn3, btn4, btn_precedent, btn_suivant))
-    btn_suivant.place(relx=0.5, rely=0.6)
+    btn_suivant.place(relx=0.5, rely=0.55)
 
     menu_widow.mainloop()
