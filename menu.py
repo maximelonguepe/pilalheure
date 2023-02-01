@@ -56,7 +56,7 @@ def menuView(app_window):
     menu_widow.title("Menu")
     menu_widow.geometry("480x320")
     button_width = 30
-    button_height = 5
+    button_height = 3
     background_color = "#d9d9d9"
     btn = Button(menu_widow, text="Changer heure de prise",
                  command=lambda: changeHeurePrise.changeHeureView(menu_widow), width=button_width, height=button_height,
