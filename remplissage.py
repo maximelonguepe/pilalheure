@@ -1,4 +1,5 @@
-from tkinter import Toplevel, Label, Button, PhotoImage
+from tkinter import Toplevel, Label, Button
+
 from database.prise import getNomsMedicamentsPasRemplis
 from scanner import scannerMedicament
 
@@ -61,6 +62,10 @@ def updateList(label, window, btnbas, btnhaut):
         label.config(fg="green")
 
 
+def quit_window(window):
+    window.destroy()
+
+
 def remplissageView(menu_view):
     remplissage = Toplevel(menu_view)
     remplissage.geometry("480x320")
@@ -71,11 +76,16 @@ def remplissageView(menu_view):
     label_titre.place(relx=0, rely=0)
     label_nom_medicaments = Label(remplissage, background="#d9d9d9", font=list_font)
     label_nom_medicaments.place(relx=0, rely=0.1)
-    btnhaut = Button(remplissage, text="Précédent", command=lambda: page_precedente(), width=30,height=3)
+    btnhaut = Button(remplissage, text="Précédent", command=lambda: page_precedente(), width=30, height=3)
     btnhaut.place(relx=0, rely=0.45)
-    btnbas = Button(remplissage, text="Suivant", command=lambda: page_suivante(), width=30,height=3)
+    btnbas = Button(remplissage, text="Suivant", command=lambda: page_suivante(), width=30, height=3)
     btnbas.place(relx=0.5, rely=0.45)
-    btn_scanner = Button(remplissage, text="Scanner", command=lambda: scannerMedicament(remplissage, 2), width=60,height=2)
+    btn_scanner = Button(remplissage, text="Scanner", command=lambda: scannerMedicament(remplissage, 2), width=60,
+                         height=2)
     updateList(label_nom_medicaments, remplissage, btnbas, btnhaut)
     btn_scanner.place(relx=0, rely=0.65)
+    btn_back = Button(remplissage, text="Fermer", command=lambda: quit_window(remplissage), width=60,
+                      height=2)
+    btn_scanner.place(relx=0, rely=0.85)
+
     remplissage.mainloop()
