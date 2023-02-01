@@ -68,7 +68,7 @@ def changerNumeroTelView(menu):
 
     premier_numero = Label(change_tel, text=0, font=text_font)
     premier_numero.place(relx=0, rely=0.3)
-    button_plus_premier_numero = Button(change_tel, text="+", width=3, height=2, command=lambda: plus(premier_numero))
+    button_plus_premier_numero = Button(change_tel, text="+", width=3, height=4, command=lambda: plus(premier_numero))
     button_plus_premier_numero.place(relx=0, rely=0.0)
     button_moins_premier_numero = Button(change_tel, text="-", width=3, height=4, command=lambda: moins(premier_numero))
     button_moins_premier_numero.place(relx=0, rely=0.42)
