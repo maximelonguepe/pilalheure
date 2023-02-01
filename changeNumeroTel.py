@@ -76,7 +76,7 @@ def changerNumeroTelView(menu):
     deuxieme_numero = Label(change_tel, text=0, font=text_font)
     deuxieme_numero.place(relx=0.1, rely=0.3)
     button_plus_deuxieme_numero = Button(change_tel, text="+", width=3, height=4, command=lambda: plus(deuxieme_numero))
-    button_plus_deuxieme_numero.place(relx=0.1, rely=0.1)
+    button_plus_deuxieme_numero.place(relx=0.1, rely=0)
     button_moins_deuxieme_numero = Button(change_tel, text="-", width=3, height=4,
                                           command=lambda: moins(deuxieme_numero))
     button_moins_deuxieme_numero.place(relx=0.1, rely=0.42)
@@ -85,7 +85,7 @@ def changerNumeroTelView(menu):
     troisieme_numero.place(relx=0.2, rely=0.3)
     button_plus_troisieme_numero = Button(change_tel, text="+", width=3, height=4,
                                           command=lambda: plus(troisieme_numero))
-    button_plus_troisieme_numero.place(relx=0.2, rely=0.1)
+    button_plus_troisieme_numero.place(relx=0.2, rely=0)
     button_moins_troisieme_numero = Button(change_tel, text="-", width=3, height=4,
                                            command=lambda: moins(troisieme_numero))
     button_moins_troisieme_numero.place(relx=0.2, rely=0.42)
@@ -94,7 +94,7 @@ def changerNumeroTelView(menu):
     quatrieme_numero.place(relx=0.3, rely=0.3)
     button_plus_quatrieme_numero = Button(change_tel, text="+", width=3, height=4,
                                           command=lambda: plus(quatrieme_numero))
-    button_plus_quatrieme_numero.place(relx=0.3, rely=0.1)
+    button_plus_quatrieme_numero.place(relx=0.3, rely=0)
     button_moins_quatrieme_numero = Button(change_tel, text="-", width=3, height=4,
                                            command=lambda: moins(quatrieme_numero))
     button_moins_quatrieme_numero.place(relx=0.3, rely=0.42)
@@ -103,7 +103,7 @@ def changerNumeroTelView(menu):
     cinquieme_numero.place(relx=0.4, rely=0.3)
     button_plus_cinquieme_numero = Button(change_tel, text="+", width=3, height=4,
                                           command=lambda: plus(cinquieme_numero))
-    button_plus_cinquieme_numero.place(relx=0.4, rely=0.1)
+    button_plus_cinquieme_numero.place(relx=0.4, rely=0)
     button_moins_cinquieme_numero = Button(change_tel, text="-", width=3, height=4,
                                            command=lambda: moins(cinquieme_numero))
     button_moins_cinquieme_numero.place(relx=0.4, rely=0.42)
@@ -111,14 +111,14 @@ def changerNumeroTelView(menu):
     sixieme_numero = Label(change_tel, text=0, font=text_font)
     sixieme_numero.place(relx=0.5, rely=0.3)
     button_plus_sixieme_numero = Button(change_tel, text="+", width=3, height=4, command=lambda: plus(sixieme_numero))
-    button_plus_sixieme_numero.place(relx=0.5, rely=0.1)
+    button_plus_sixieme_numero.place(relx=0.5, rely=0)
     button_moins_sixieme_numero = Button(change_tel, text="-", width=3, height=4, command=lambda: moins(sixieme_numero))
     button_moins_sixieme_numero.place(relx=0.5, rely=0.42)
 
     septieme_numero = Label(change_tel, text=0, font=text_font)
     septieme_numero.place(relx=0.6, rely=0.3)
     button_plus_septieme_numero = Button(change_tel, text="+", width=3, height=4, command=lambda: plus(septieme_numero))
-    button_plus_septieme_numero.place(relx=0.6, rely=0.1)
+    button_plus_septieme_numero.place(relx=0.6, rely=0)
     button_moins_septieme_numero = Button(change_tel, text="-", width=3, height=4,
                                           command=lambda: moins(septieme_numero))
     button_moins_septieme_numero.place(relx=0.6, rely=0.42)
@@ -126,7 +126,7 @@ def changerNumeroTelView(menu):
     huitieme_numero = Label(change_tel, text=0, font=text_font)
     huitieme_numero.place(relx=0.7, rely=0.3)
     button_plus_huitieme_numero = Button(change_tel, text="+", width=3, height=4, command=lambda: plus(huitieme_numero))
-    button_plus_huitieme_numero.place(relx=0.7, rely=0.1)
+    button_plus_huitieme_numero.place(relx=0.7, rely=0)
     button_moins_huitieme_numero = Button(change_tel, text="-", width=3, height=4,
                                           command=lambda: moins(huitieme_numero))
     button_moins_huitieme_numero.place(relx=0.7, rely=0.42)
@@ -134,7 +134,7 @@ def changerNumeroTelView(menu):
     neuvieme_numero = Label(change_tel, text=0, font=text_font)
     neuvieme_numero.place(relx=0.8, rely=0.3)
     button_plus_neuvieme_numero = Button(change_tel, text="+", width=3, height=4, command=lambda: plus(neuvieme_numero))
-    button_plus_neuvieme_numero.place(relx=0.8, rely=0.1)
+    button_plus_neuvieme_numero.place(relx=0.8, rely=0)
     button_moins_neuvieme_numero = Button(change_tel, text="-", width=3, height=4,
                                           command=lambda: moins(neuvieme_numero))
     button_moins_neuvieme_numero.place(relx=0.8, rely=0.42)
@@ -142,7 +142,7 @@ def changerNumeroTelView(menu):
     dizieme_numero = Label(change_tel, text=0, font=text_font)
     dizieme_numero.place(relx=0.9, rely=0.3)
     button_plus_dizieme_numero = Button(change_tel, text="+", width=3, height=4, command=lambda: plus(dizieme_numero))
-    button_plus_dizieme_numero.place(relx=0.9, rely=0.1)
+    button_plus_dizieme_numero.place(relx=0.9, rely=0)
     button_moins_dizieme_numero = Button(change_tel, text="-", width=3, height=4, command=lambda: moins(dizieme_numero))
     button_moins_dizieme_numero.place(relx=0.9, rely=0.42)
 
