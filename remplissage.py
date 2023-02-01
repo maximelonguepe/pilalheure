@@ -86,6 +86,6 @@ def remplissageView(menu_view):
     btn_scanner.place(relx=0, rely=0.65)
     btn_back = Button(remplissage, text="Fermer", command=lambda: quit_window(remplissage), width=60,
                       height=2)
-    btn_scanner.place(relx=0, rely=0.85)
+    btn_back.place(relx=0, rely=0.85)
 
     remplissage.mainloop()
