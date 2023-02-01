@@ -82,7 +82,7 @@ def menuView(app_window):
     btn_suivant = Button(menu_widow, text="->", background=background_color, width=button_width, height=3,
                          command=lambda: suivant_et_affiche(btn, btn2, btn3, btn4, btn_precedent, btn_suivant))
     btn_suivant.place(relx=0.5, rely=0.55)
-    btn_close = Button(menu_widow, text="Fermer", background=background_color, width=button_width, height=3,
+    btn_close = Button(menu_widow, text="Fermer", background=background_color, width=button_width*2, height=3,
                        command=lambda: close_widow())
-    btn_close.place(relx=0, rely=0.8)
+    btn_close.place(relx=0, rely=0.75)
     menu_widow.mainloop()
