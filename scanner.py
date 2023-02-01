@@ -69,7 +69,7 @@ def scannerMedicament(menu, parcours):
     scan = Toplevel(menu)
     scan.title("Scanner medicament")
     scan.geometry("480x320")
-    text_font = ("Boulder", 20, 'bold')
+    text_font = ("Boulder", 15, 'bold')
     border_width = 25
     label_scan = Label(scan, text="Veuillez scanner le médicament", font=text_font, bd=border_width)
     label_scan.place(rely=0, relx=0)

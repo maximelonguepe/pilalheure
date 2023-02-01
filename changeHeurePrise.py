@@ -54,8 +54,8 @@ def changeHeureView(menu):
     button_plus_minutes = Button(changeHeure, text="+", font=text_font, width=5,
                                  command=lambda: plus(minutes_label, 59))
     button_plus_minutes.place(relx=.6, rely=.5)
-    button_ok = Button(changeHeure, text="Ok", width=30, height=5,
+    button_ok = Button(changeHeure, text="Ok", width=30*2, height=5,
                        command=lambda: update_heure_rappel_and_close(changeHeure, int(heure_label.cget('text')),
                                                                      int(minutes_label.cget('text'))))
-    button_ok.place(relx=.3, rely=.7)
+    button_ok.place(relx=0, rely=.7)
     changeHeure.mainloop()
